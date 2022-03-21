@@ -42,6 +42,12 @@ public class Employee {
 		this.projectName = projectName;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return "*** id = "+id+" name :- "+name+" ***";
+	}
 	public void doOfficeWork()
 	{
 		
