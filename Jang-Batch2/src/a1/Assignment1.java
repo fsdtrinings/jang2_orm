@@ -11,19 +11,36 @@ public class Assignment1 {
 	
 	public static void main(String[] args) {
 	
-		 // call method getElementPosition to find out whether element is present in the list or not
-		
-		// call displayMethod to print appropriate output
+		Assignment1 obj = new Assignment1();
+		int searchNumber = 105; // scanner , through user input 
+		int position = obj.getElementPosition(searchNumber);
+		obj.displayInfomation(searchNumber, position);
 	}
 	
 	
 	public int getElementPosition(int searchNumber)
 	{
-		// method should return the position of the element otherwise return -1
-	}
+		
+		for (int i =0;i<arr.length;i++) 
+		{
+			if(arr[i] == searchNumber)
+			{
+				return i;
+			}//end of if
+		}//end of for 
+		
+		return -1;
+	}//end of get Element by position 
 	
 	public void displayInfomation(int searchNumber,int position)
 	{
-		// if position is -1 then output should <<searchNumber>> not exist in the list
+		if(position == -1)
+		{
+			System.out.println(searchNumber+" not in the list");
+		}
+		else 
+		{
+			System.out.println(searchNumber+" is available at position "+position);
+		}
 	}
-}
+}//end class
