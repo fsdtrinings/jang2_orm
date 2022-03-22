@@ -6,6 +6,7 @@ public class Employee {
 	private String name;
 	private int salary;
 	private String projectName;
+	
 	public Employee() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -45,8 +46,31 @@ public class Employee {
 	
 	
 	@Override
+	public int hashCode() {
+		System.out.println("--->> inside hashcode , called for "+name);
+		return id+name.length()+salary;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		System.out.println("--->> inside equals , called for "+name);
+		if(obj instanceof Employee)
+		{
+			Employee e = (Employee) obj;
+			
+			boolean a = (this.id == e.id);
+			boolean b = (this.name.equals(e.name));
+			boolean c = (this.salary == e.salary);
+			boolean d = (this.projectName.equals(e.projectName));
+			
+			return a&&b&&c&&d;
+			
+		}
+		else return false;
+	}
+	
+	@Override
 	public String toString() {
-		return "*** id = "+id+" name :- "+name+" ***";
+		return "id = "+id+" name :- "+name;
 	}
 	public void doOfficeWork()
 	{
