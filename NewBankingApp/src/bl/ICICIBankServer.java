@@ -3,30 +3,39 @@ package bl;
 import java.util.List;
 
 import bo.Client;
+import db.ClientDataBase;
 
 /*  Replace by RestController 
  * This code deals with all server related activities */
 
 public class ICICIBankServer
 {
-
-	public boolean addClient()
+	
+	ClientDataBase db = new ClientDataBase();// so that server can communicate with DB
+	
+	public boolean addClient(Client client)
 	{
 		boolean isClientAdded = false;
 		
-		// code to insert user into DB
+		// validation 
+		
+		// security code
+		
+		// business compliance 
+		
+		isClientAdded = db.addClientInBranch(client.getBranchName(), client);
 		
 		return isClientAdded;
 		
 	}//end of add client
 	
 	
-	public List<Client> getAllClientsInfo()
+	public List<Client> getAllClientsBasedOnBranch(String branchName)
 	{
 		List<Client> clientList = null;
-		// code to fetch all clients information from database 
-	    
-		// load information in List
+		
+		clientList = db.getAllClientsInfoBasedOnBrach(branchName);
+		
 		
 		return clientList;
 	
@@ -50,4 +59,13 @@ public class ICICIBankServer
 		return updateStatus;
 	}
 	
+	public boolean doDeposit(int accountNumber , int amount)
+	{
+		return db.depositAmount(accountNumber, amount);
+	}
+	
+	public Client searchClient(int accountNumber)
+	{
+		return db.getClientInfo(accountNumber);
+	}
 }//end class

@@ -62,8 +62,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "Client [accountNumber=" + accountNumber + ", clientName=" + clientName + ", balance=" + balance
-				+ ", branchName=" + branchName + "]";
+		return accountNumber+" Name  "+clientName+"Balance : "+balance+"INR "+" BranchName "+branchName;
 	}
 
 	@Override
