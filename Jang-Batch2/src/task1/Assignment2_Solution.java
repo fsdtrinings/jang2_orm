@@ -1,8 +1,10 @@
 package task1;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class Assignment2 {
+public class Assignment2_Solution {
 	
 	// already existing database
 	String listOfUsersEmail[] = {"ramesh@gmail.com",
@@ -21,37 +23,47 @@ public class Assignment2 {
 		System.out.println("Enter the domain to be checked :- ");
 		String searchedDomain = sc.nextLine();
 		
-		Assignment2 businessOperation = new Assignment2();
+		Assignment2_Solution businessOperation = new Assignment2_Solution();
 	
-		String usersOfSerachedDomain[]  = businessOperation.filterEmailByDomainName(searchedDomain);
+		List<String> usersOfSerachedDomain  = businessOperation.filterEmailByDomainName(searchedDomain);
 		
 		System.out.println(" Users related to "+searchedDomain+" ");
 		System.out.println("----------------------------------------------");
-		for (String user : usersOfSerachedDomain) {
-			System.out.println(user);
+		
+		if(usersOfSerachedDomain != null)
+		{
+			for (String user : usersOfSerachedDomain) {
+				System.out.println(user);
+			}
 		}
+		else
+		{
+			System.out.println(" No user for "+searchedDomain+" domain");
+		}
+		
+		
 		
 	}
 	
 	// Business Operations is the Server code
-	public String[] filterEmailByDomainName(String searchedDomainName)
+	
+	public List<String> filterEmailByDomainName(String searchedDomainName)
 	{
 		 // business operation
-		String resultArr[] = new String[100]; // becoz we dont know the actual amount of data
-		int index = 0;
 		
-		for (String userEmail : listOfUsersEmail) {
+		List<String> resultList = new ArrayList<>();
+		
 			
+		for (String userEmail : listOfUsersEmail) {
 			if(userEmail.endsWith(searchedDomainName))
 			{
-				resultArr[index] = userEmail;
-				index++;
+				resultList.add(userEmail);
 			}
 			
 		}//end for
 		
-		if(index == 0) return null;
-		else return resultArr;
+		if(resultList.size() == 0) return null;
+		else return resultList;
 		
 		
 	}//end method
